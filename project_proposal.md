@@ -21,3 +21,18 @@ This method will track the leveling progress of the player, the new level will u
 - Side effects:
     Will update the level & xp attributes of current player
     When gain xp or level up, print the message to notify player
+
+
+-Begin Battle function/method : Breanna
+This method begins the battle between the player and whichever boss they encounter
+-Args:
+    player : Player object that is currently playing the game
+    boss : boss object that player encounters
+-Return: 
+    nothing
+-Side effects:
+    -print out the name of the boss has appeared to the player 
+	-if the player wins (if the boss’ health is less than or equal to zero), print out that the player has defeated boss name
+	-if player loses (if player’s health is less than or equal to zero), print out player has loss the fight against boss name 
+
+
