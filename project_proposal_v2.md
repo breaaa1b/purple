@@ -29,5 +29,20 @@ Returns:
     Int: the score of current player
 
 
+Play Trick function/method: Brea:
+This function simulates a trick being played
+-player deals one card or a trick is played
+-player with the 2 of clubs starts trick or winner of the last trick after the first trick has already passed
+-first card played = lead suit
+-filter cards to only match lead suit (can’t play a heart or queen of spades on first trick)
+-find highest card from the filtered cards
+-return the highest card or the card that wins the trick
+
+Args:
+	-player_list: list of current players
+Side effect:
+	-prints out winning card of the trick
+Returns: 
+	Player: the winning card (highest card) 
 
 
