@@ -1,34 +1,37 @@
 import random
-
-def play_trick(hand, lead):
-    leader_card = random.choice(hand[lead])
-    amount_played = [None] * 4
-    amount_played[leader_card] = lead
-    hand[lead].remove(leader_card)
+def initialize(num):
+    suits = ["C", "D", "H", "S"]
+    ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
+    deck = [rank + suit for suit in suits for rank in ranks ]
     
-    leader_suit = leader_card[-1]
-    
-    for i in range(1, 4):
-        current = (lead + 1) % 4
-        valid = [card for card in hand[current] if card[-1] == leader_suit]
+    if num == 3:
+        deck.remove("2D")
+    elif num == 5:
+        deck.remove("2C")
         
-        if valid:
-            chosen = random.choice(valid)
-        else:
-            chosen = random.choice(hand[current])
-        
-        amount_played[current] = chosen
-        hand[current].remove(chosen)
-    
-    
-    total_leader = [(i, card) for i, card in enumerate(amount_played) if card[-1] == leader_suit]
-    winner = max(total_leader, key = lambda x: card_value(x[1]))[0]
-    
-    return winner, amount_played
+    random.shuffle(deck)
+    hand = len(deck) // num
+    hands = [deck[i * hand:(i + 1) * hand] for i in range (num)]
+    return hands
 
-
-def card_value(card):
-    suits = {'C': 0, 'D': 1, 'H': 2, 'S': 3}
-    ranks = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, 
-                 '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
-    return suits[card[-1]] * 100 + ranks[card[:-1]]
+def play_trick(hands, lead = None):
+    players = len(hands)
+    if players not in [3, 4, 5]:
+        raise ValueError("This game only supports 3, 4, or 5 players only")
+    
+    if lead is None:
+        starting = "2C" if num != 3 else "3C"
+        for i, hand in enumerate(hands):
+            if starting in hand:
+                lead = i
+                break
+    
+    
+    if lead is None:
+        raise ValueError("No starting card found in hand")
+    
+    lead_card = next(card for card in hands[lead] if card == ("2C" if players != 3 else "3C"))
+    played_cards = [None] * players
+    played_cards[lead] = lead_card
+    hands[lead].remove(lead_card)
+    lead_suit = lead_card[-1]
