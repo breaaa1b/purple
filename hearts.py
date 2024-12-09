@@ -105,6 +105,17 @@ class ComputerPlayer(Player):
 
 class Game:
     def __init__(self, player_num, max_score=100):
+        """ Initializes new hearts game
+        
+            Args:
+            player_num: int
+            amount of players playing the game
+            max_score: int
+            the max score of the game 
+            
+            Side effects:
+            Sets up initial game state
+        """
         self.player_num = player_num
         self.deck = DECK[:]
         self.players = []
@@ -205,6 +216,12 @@ class Game:
             player.reset()
     
     def play_game(self):
+        """Begins and ends the hearts game
+        
+            Side Effects:
+            prints out that the game is over, who the winner is, 
+            and what their score is once the while loop is finished executing
+        """
         self.setup_players()
         self.card_deck()
         
