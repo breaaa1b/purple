@@ -104,10 +104,8 @@ class Player:
         return self.name
 
 class HumanPlayer(Player):
-    """Represents a human player in Hearts game
-
-        Side effects:
-        prints out varying messages guiding the player how to play
+    """ Represents a human player in Hearts game
+        Sub-class of Player    
     """
     def play_card(self, lead_suit=None, is_first_trick=False):
         """Simulates player playing their card
@@ -115,7 +113,9 @@ class HumanPlayer(Player):
         Args:
             lead_suit (None): the lead suit of the trick
             is_first_trick (bool): the first trick 
-            
+        
+        Side effects:
+            prints out varying messages guiding the player how to play   
             
         Returns:
             str: A string representation of player's card that they are 
@@ -137,7 +137,23 @@ class HumanPlayer(Player):
                 print("Invalid card. Try again!")
 
 class ComputerPlayer(Player):
+    """ Represemts a Computer Player in the Hearts Game
+        Sub-class of Player
+    """
     def play_card(self, lead_suit=None, is_first_trick=False):
+        """ Simulates NPC computer player playing their card
+        
+        Args:
+            lead_suit (str): the lead suit of the trick
+            is_first_trick (bool): the first trick
+        
+        Side effects:
+            prints out name of Computer Player and what card they play
+             
+        Returns:
+            str: A string representation of player's card that they are 
+            playing: card 
+        """
         valid_cards = [card for card in self.hand if lead_suit if None or lead_suit in card]
         if not valid_cards:
             valid_cards = self.hand
@@ -153,6 +169,15 @@ class ComputerPlayer(Player):
 
 class Game:
     def __init__(self, player_num, max_score=100):
+        """ Initializes new hearts game
+        
+        Args:
+            player_num (int): amount of players playing the game
+            max_score (int): the max score of the game 
+            
+        Side effects:
+            Sets up initial game state
+        """
         self.player_num = player_num
         self.deck = DECK[:]
         self.players = []
@@ -183,6 +208,16 @@ class Game:
             self.players[i % self.player_num].receive_cards([card])
     
     def play_trick(self):
+        """Simulates a trick being played
+
+            Returns:
+            winner: Player
+            winner (player object) of the current trick
+            
+            Side effects:
+            prints out that the winner won the current trick
+            modifies self.current_leader to be the winner 
+        """
         trick = []
         lead_suit = None
         
@@ -242,6 +277,12 @@ class Game:
             player.reset()
     
     def play_game(self):
+        """Begins and ends the hearts game
+        
+            Side Effects:
+            prints out that the game is over, who the winner is, 
+            and what their score is once the while loop is finished executing
+        """
         self.setup_players()
         self.card_deck()
         
