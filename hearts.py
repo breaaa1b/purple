@@ -126,10 +126,13 @@ class HumanPlayer(Player):
         while True:
             card = input("Enter the card to play: ").strip()
             if card in self.hand:
-                if lead_suit and not (lead_suit in card) and any(lead_suit in c for c in self.hand):
+                if (lead_suit and 
+                    not (lead_suit in card) and 
+                    any(lead_suit in c for c in self.hand)):
                     print("You must follow the lead suit!")
                 elif is_first_trick and ("H" in card or card == "QS"):
-                    print("You cannot play Hearts or the Queen of Spades on the first trick")
+                    print("You cannot play Hearts or the Queen of Spades"
+                          " on the first trick!")
                 else:
                     self.hand.remove(card)
                     return card
@@ -154,12 +157,15 @@ class ComputerPlayer(Player):
             str: A string representation of player's card that they are 
             playing: card 
         """
-        valid_cards = [card for card in self.hand if lead_suit if None or lead_suit in card]
+        valid_cards = [card for card in self.hand 
+                       if lead_suit 
+                       if None or lead_suit in card]
         if not valid_cards:
             valid_cards = self.hand
         
         if is_first_trick:
-            valid_cards = [card for card in valid_cards if "H" not in card and card != "QS"]
+            valid_cards = [card for card in valid_cards 
+                           if "H" not in card and card != "QS"]
         
         card = valid_cards[0]
         self.hand.remove(card)
@@ -168,6 +174,19 @@ class ComputerPlayer(Player):
         return card
 
 class Game:
+    """ Perform the actual game
+    
+    Attributes:
+        player_num (int): amount of players playing the game
+        deck (list): the card deck, will adjust size based on the amount of 
+        players playing the game
+        players (list): contain a list of players for current game
+        scores (dict): contains sets of players and their scores
+        max_scores (int): player could customize the max_score to decide when
+        to end the game
+        current_leader (Player): each trick will have a leader who own the first
+        play of each trick
+    """
     def __init__(self, player_num, max_score=100):
         """ Initializes new hearts game
         
@@ -177,11 +196,11 @@ class Game:
             
         Side effects:
             Sets up initial game state
+            Define basic attributes for game to start
         """
         self.player_num = player_num
         self.deck = DECK[:]
         self.players = []
-        self.trick = []
         self.scores = {}
         self.max_score = max_score
         self.current_leader = None
