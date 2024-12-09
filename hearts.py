@@ -10,7 +10,6 @@ class Player:
     Attributes:
         name (str): the player's name
         hand (list): the cards belongs to the player for current play
-        score (int): the score calculated based on the cards player collected
         collected_tricks (list): the cards received when winning the trick
     """
     def __init__(self, name):
@@ -23,7 +22,6 @@ class Player:
         """
         self.name = name
         self.hand = []
-        self.score = 0
         self.collected_tricks = []
     
     def receive_cards(self, cards):
@@ -71,20 +69,18 @@ class Player:
         """ Calculating scores based on the cards player collected through
         every trick
         
-        Side effects:
-            Modify score attribute
-        
         Returns:
             int: the score calculated based on the rules; One heart card will 
             worth 1pt, One Queen of Spades worth 13pt. 
         """
+        score = 0
+        
         hearts = [card for card in self.collected_tricks if "H" in card]
         queen_of_spades = "QS" in self.collected_tricks
-        
-        self.score += len(hearts)
+        score += len(hearts)
         if queen_of_spades:
-            self.score += 13
-        return self.score
+            score += 13
+        return score
     
     def reset(self):
         """ Reset the game for another round
@@ -204,12 +200,24 @@ class Game:
         self.current_leader = None
     
     def setup_players(self):
-        self.players.append(HumanPlayer("You"))
+        """ Setting up players according to the number of players
+        
+        Side effects:
+            Modify players and scores attributes to setup for new game
+            Ask input for name
+        """
+        self.players.append(HumanPlayer(input("Please enter your name: ")))
         for i in range(1, self.player_num):
-            self.players.append(ComputerPlayer(f"Computer #{i}"))
+            self.players.append(ComputerPlayer(f"Computer #{~i}"))
         self.scores = {player.name: 0 for player in self.players}
     
     def card_deck(self):
+        """ Setting up the card deck for the game
+        
+        Side effects:
+            Modify deck attributes to fit the number of players
+            Print out adject deck complete information for players
+        """
         if self.player_num == 3:
             self.deck.remove("2D")
         elif self.player_num == 5:
@@ -218,9 +226,15 @@ class Game:
               " cards in total right now. ")
     
     def shuffle_and_deal(self):
+        """ Begin the game by randomly shuffle the card deck and deal the cards
+        for each player based on the number of player
+        
+        Side effects:
+            Print out shuffled complete messgae for players.
+        """
         random.shuffle(self.deck)
         print(f"Cards have been shuffled.")
-        num_cards = len(self.deck)
+        
         for i, card in enumerate(self.deck):
             self.players[i % self.player_num].receive_cards([card])
     
@@ -254,7 +268,7 @@ class Game:
         )
         winner = next(player for player, card in trick if card == winning_card)
         
-        winner.collect_trick([card for card in trick])
+        winner.collect_trick([card for player, card in trick])
         print(f"{winner.name} wins this trick!\n")
         
         self.current_leader = winner
@@ -272,6 +286,12 @@ class Game:
                 self.scores[player.name] += round_score
                 
     def play_round(self):
+        """ Perform each round of game
+        
+        Side effects:
+            Print out current leader for player
+            Print out scores after each round
+        """
         self.shuffle_and_deal()
         if not self.current_leader:
             lead_card = "3C" if "2C" not in self.deck else "2C"
@@ -295,7 +315,7 @@ class Game:
     def play_game(self):
         """Begins and ends the hearts game
         
-            Side Effects:
+        Side Effects:
             prints out that the game is over, who the winner is, 
             and what their score is once the while loop is finished executing
         """
