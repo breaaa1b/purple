@@ -135,6 +135,15 @@ class Game:
             self.players[i % self.player_num].receive_cards([card])
     
     def play_trick(self):
+        """Simulates a trick being played
+
+            Returns:
+            winner: Player
+            winner (player object) of the current trick
+            
+            Side effects:
+            prints out that the winner won the current trick
+        """
         trick = []
         lead_suit = None
         
