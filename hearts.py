@@ -143,6 +143,7 @@ class Game:
             
             Side effects:
             prints out that the winner won the current trick
+            modifies self.current_leader to be the winner 
         """
         trick = []
         lead_suit = None
