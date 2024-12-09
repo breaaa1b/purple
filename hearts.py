@@ -170,20 +170,8 @@ class Game:
         
         self.current_leader = winner
         return winner
-        # if lead_suit is None:
-        #     starting = "2C" if self.player_num != 3 else "3C"
-        #     for i, hand in enumerate(self.hand):
-        #         if starting in hand:
-        #             lead = i
-        #             break
-        #     if lead is None:
-        #         raise ValueError("No starting card found in hand")
     
-    # lead_card = next(card for card in hands[lead] if card == ("2C" if players != 3 else "3C"))
-    # played_cards = [None] * players
-    # played_cards[lead] = lead_card
-    # hands[lead].remove(lead_card)
-    # lead_suit = lead_card[-1]
+    
     def calculate_scores(self):
         for player in self.players:
             round_score = player.calculate_score()
