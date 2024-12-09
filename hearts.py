@@ -5,34 +5,102 @@ RANKS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
 DECK =  [rank + suit for suit in SUITS for rank in RANKS ]
 
 class Player:
+    """ A valid Player
+    
+    Attributes:
+        name (str): the player's name
+        hand (list): the cards belongs to the player for current play
+        score (int): the score calculated based on the cards player collected
+        collected_tricks (list): the cards received when winning the trick
+    """
     def __init__(self, name):
+        """ Initialize a Player object.
+        Args:
+            name (str): a string that stored as player's name
+        
+        Side effects:
+            Define name, hand, and collected_tricks attributes
+        """
         self.name = name
         self.hand = []
+        self.score = 0
         self.collected_tricks = []
     
     def receive_cards(self, cards):
+        """ Recive the cards deal by the computer randomly
+        
+        Args:
+            cards (list): a list of cards deal by the computer from the start of 
+            every round.
+        
+        Side effects:
+            Modify hand attributes, store cards for each player
+        """
         self.hand.extend(cards)
     
     def play_card(self, lead_suit=None, is_first_trick=False):
+        """ This method let player play their card for game
+        
+        Args:
+            lead_suit (str): optional if the first trick for current player;
+            consist of the leading suit for current trick
+            is_first_trick (bool): optional if not the frist trick; if not the 
+            first trick, the player need to follow different rules; if first 
+            trick, the leading suit can be decided by the player
+        
+        Raises:
+            NotImplementedError(): HumanPlayer and ComputerPlayer override this
+            method due to different way of playing games
+        """
         raise NotImplementedError()
     
     def collect_trick(self, cards):
+        """ Allow player collect the cards if winning the trick
+        Args:
+            cards (list): if ended up with the highest number of the suit, the
+            player will be able to collect all four cards played for current 
+            trick for calculating scores
+        
+        Side effects:
+            Modify collected_tricks attributes, store cards for scores for each
+            player
+        """
         self.collected_tricks.extend(cards)
     
     def calculate_score(self):
-        score = 0
+        """ Calculating scores based on the cards player collected through
+        every trick
+        
+        Side effects:
+            Modify score attribute
+        
+        Returns:
+            int: the score calculated based on the rules; One heart card will 
+            worth 1pt, One Queen of Spades worth 13pt. 
+        """
         hearts = [card for card in self.collected_tricks if "H" in card]
         queen_of_spades = "QS" in self.collected_tricks
-        score += len(hearts)
+        
+        self.score += len(hearts)
         if queen_of_spades:
-            score += 13
-        return score
+            self.score += 13
+        return self.score
     
     def reset(self):
+        """ Reset the game for another round
+        
+        Side effects:
+            Modify hand and collected_tricks for each player
+        """
         self.hand.clear()
         self.collected_tricks.clear()
     
     def __str__(self):
+        """ Produce an informal string representation of current Player's name
+        
+        Returns:
+            str: the string representation of current Player
+        """
         return self.name
 
 class HumanPlayer(Player):
@@ -44,16 +112,14 @@ class HumanPlayer(Player):
     def play_card(self, lead_suit=None, is_first_trick=False):
         """Simulates player playing their card
 
-            Args:
-            lead_suit: None
-            the lead suit of the trick
-            is_first_trick: bool
-            the first trick 
+        Args:
+            lead_suit (None): the lead suit of the trick
+            is_first_trick (bool): the first trick 
             
             
-            Returns:
-            str
-            A string representation of player's card that they are playing: card
+        Returns:
+            str: A string representation of player's card that they are 
+            playing: card
         """
         print(f"\nNow is {self.name}'s turn!")
         print(f"Your hand: {self.hand}")
@@ -142,20 +208,7 @@ class Game:
         
         self.current_leader = winner
         return winner
-        # if lead_suit is None:
-        #     starting = "2C" if self.player_num != 3 else "3C"
-        #     for i, hand in enumerate(self.hand):
-        #         if starting in hand:
-        #             lead = i
-        #             break
-        #     if lead is None:
-        #         raise ValueError("No starting card found in hand")
-    
-    # lead_card = next(card for card in hands[lead] if card == ("2C" if players != 3 else "3C"))
-    # played_cards = [None] * players
-    # played_cards[lead] = lead_card
-    # hands[lead].remove(lead_card)
-    # lead_suit = lead_card[-1]
+        
     def calculate_scores(self):
         for player in self.players:
             round_score = player.calculate_score()
