@@ -168,6 +168,17 @@ class ComputerPlayer(Player):
         return card
 
 class Game:
+    """Represents game of hearts
+    
+        Attributes:
+        player_num (int): amount of players playing
+        deck(list): represents the deck of cards
+        players (list) : represents the players of the game
+        trick (list) : represents the current trick
+        scores (dictionary) : represents the scores of each player playing
+        max_score (int) : the maximum score of the current game
+        current_leader (Player) : represents the current leader of the game
+    """
     def __init__(self, player_num, max_score=100):
         """ Initializes new hearts game
         
@@ -211,8 +222,7 @@ class Game:
         """Simulates a trick being played
 
             Returns:
-            winner: Player
-            winner (player object) of the current trick
+            winner(Player): winner (player object) of the current trick
             
             Side effects:
             prints out that the winner won the current trick
