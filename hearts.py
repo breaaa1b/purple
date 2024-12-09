@@ -71,7 +71,25 @@ class HumanPlayer(Player):
                 print("Invalid card. Try again!")
 
 class ComputerPlayer(Player):
+    """Represemts a Computer Player in the Hearts Game
+        
+        Side effects:
+        prints out name of Computer Player and what card they play
+    """
     def play_card(self, lead_suit=None, is_first_trick=False):
+        """Simulates NPC computer player playing their card
+        
+            Args:
+            lead_suit: None
+            the lead suit of the trick
+            is_first_trick: bool
+            the first trick
+            
+            Returns:
+            str
+            A string representation of player's card that they are playing: card 
+        
+        """
         valid_cards = [card for card in self.hand if lead_suit if None or lead_suit in card]
         if not valid_cards:
             valid_cards = self.hand
