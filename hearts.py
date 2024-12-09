@@ -111,7 +111,7 @@ class HumanPlayer(Player):
         """Simulates player playing their card
 
         Args:
-            lead_suit (None): the lead suit of the trick
+            lead_suit (str): the lead suit of the trick
             is_first_trick (bool): the first trick 
         
         Side effects:
