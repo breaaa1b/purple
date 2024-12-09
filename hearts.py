@@ -111,7 +111,7 @@ class HumanPlayer(Player):
         """Simulates player playing their card
 
         Args:
-            lead_suit (None): the lead suit of the trick
+            lead_suit (str): the lead suit of the trick
             is_first_trick (bool): the first trick 
         
         Side effects:
@@ -174,18 +174,16 @@ class ComputerPlayer(Player):
         return card
 
 class Game:
-    """ Perform the actual game
+    """Represents game of hearts
     
-    Attributes:
-        player_num (int): amount of players playing the game
-        deck (list): the card deck, will adjust size based on the amount of 
-        players playing the game
-        players (list): contain a list of players for current game
-        scores (dict): contains sets of players and their scores
-        max_scores (int): player could customize the max_score to decide when
-        to end the game
-        current_leader (Player): each trick will have a leader who own the first
-        play of each trick
+        Attributes:
+        player_num (int): amount of players playing
+        deck(list): represents the deck of cards
+        players (list) : contains the players of the game
+        scores (dict) : consist of players with their scores
+        max_score (int) : the maximum score of the current game that player
+        could customize by their self
+        current_leader (Player) : represents the current leader of the game
     """
     def __init__(self, player_num, max_score=100):
         """ Initializes new hearts game
@@ -230,8 +228,7 @@ class Game:
         """Simulates a trick being played
 
             Returns:
-            winner: Player
-            winner (player object) of the current trick
+            winner(Player): winner (player object) of the current trick
             
             Side effects:
             prints out that the winner won the current trick
