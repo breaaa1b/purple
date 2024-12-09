@@ -36,7 +36,18 @@ class Player:
         return self.name
 
 class HumanPlayer(Player):
+    """Represents a human player in Hearts game
+
+        Side effects:
+        prints out varying messages guiding the player how to play
+    """
     def play_card(self, lead_suit=None, is_first_trick=False):
+        """Simulates player playing their card
+        
+            Returns:
+            str
+            A string representation of player's card that they are playing: card
+        """
         print(f"\nNow is {self.name}'s turn!")
         print(f"Your hand: {self.hand}")
         while True:
