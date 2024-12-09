@@ -43,7 +43,14 @@ class HumanPlayer(Player):
     """
     def play_card(self, lead_suit=None, is_first_trick=False):
         """Simulates player playing their card
-        
+
+            Args:
+            lead_suit: None
+            the lead suit of the trick
+            is_first_trick: bool
+            the first trick 
+            
+            
             Returns:
             str
             A string representation of player's card that they are playing: card
