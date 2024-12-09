@@ -275,6 +275,12 @@ class Game:
         return winner
         
     def calculate_scores(self):
+        """Calculates scores for players in current game
+        
+            Side effects:
+            prints name of player that shot the moon if round_score is 26
+            modifies self.score according to player.name 
+        """
         for player in self.players:
             round_score = player.calculate_score()
             if round_score == 26:
