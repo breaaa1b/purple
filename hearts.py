@@ -172,7 +172,7 @@ class ComputerPlayer(Player):
 class Game:
     """Represents game of hearts
     
-        Attributes:
+    Attributes:
         player_num (int): amount of players playing
         deck(list): represents the deck of cards
         players (list) : contains the players of the game
@@ -208,7 +208,7 @@ class Game:
         """
         self.players.append(HumanPlayer(input("Please enter your name: ")))
         for i in range(1, self.player_num):
-            self.players.append(ComputerPlayer(f"Computer #{~i}"))
+            self.players.append(ComputerPlayer(f"Computer #{i}"))
         self.scores = {player.name: 0 for player in self.players}
     
     def card_deck(self):
@@ -277,7 +277,7 @@ class Game:
     def calculate_scores(self):
         """Calculates scores for players in current game
         
-            Side effects:
+        Side effects:
             prints name of player that shot the moon if round_score is 26
             modifies self.score according to player.name 
         """
@@ -328,16 +328,23 @@ class Game:
         self.setup_players()
         self.card_deck()
         
-        while all(score < self.max_score for score in self.scores.values()):
-            self.play_round()
-        
-        print("\nGame Over!")
-        winner = min(self.scores, key=self.scores.get)
-        print(f"The winner is {winner} with a score of {self.scores[winner]}!")
+        while True:
+            for score in self.scores.values():
+                if score >= self.max_score:
+                    print("\nGame Over!")
+                    winner = min(self.scores, key=self.scores.get)
+                    print(f"The winner is {winner} with a score of "
+                          f"{self.scores[winner]}!")
+                    break
+            else:
+                self.play_round()
+                continue
+            break # break out if game is over
 
 if __name__ == "__main__":
     print("Welcomd to Hearts Card Game!")
     
+    max_score = input("Please enter the max score if you want: ")    
     while True:
         try:
             player_num = int(input("Enter the number of players (3-5): "))
@@ -345,7 +352,14 @@ if __name__ == "__main__":
                 break
             print("Invalid choice. Please enter a number 3-5")
         except ValueError:
-            print("Invalid input. Please enter a number.")
+            print("Invalid input. Please enter a number.")   
     
-    game = Game(player_num)
-    game.play_game()
+    if int(max_score):
+        print(f"Max score will be: {max_score}")
+        game = Game(player_num, max_score=int(max_score))
+        game.play_game()
+    else:
+        game = Game(player_num)
+        game.play_game()
+        
+    
