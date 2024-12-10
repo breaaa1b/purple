@@ -2,8 +2,9 @@
 Purple group's repository 
 
 Group: Purple
-Group Member: Sharon Zhang, Breanna Bernardino 
-Commit ID: bb1a70c708c32a852c50566a95af418daf4aed0d
+
+Group Member: Sharon Zhang, Breanna Bernardino
+
 
 - Purpose of each file in our repository:
     - hearts.py: the game itself
