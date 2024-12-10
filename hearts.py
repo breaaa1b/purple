@@ -336,7 +336,7 @@ class Game:
         print(f"The winner is {winner} with a score of {self.scores[winner]}!")
 
 if __name__ == "__main__":
-    print("Welcomd to Hearts Card Game!")
+    print("Welcome to Hearts Card Game!")
     
     while True:
         try:
