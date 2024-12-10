@@ -12,7 +12,11 @@ Commit ID: bb1a70c708c32a852c50566a95af418daf4aed0d
 
 
 - How to run our program:
-Run “python3 hearts.py” will start the game
+Run 
+```
+python3 hearts.py
+```
+will start the game
 
 
 - Instructions:
@@ -32,6 +36,7 @@ Run “python3 hearts.py” will start the game
 
 
 - Attribution:
+```
 __init__(Player)
 Sharon Zhang
 
@@ -94,6 +99,7 @@ Sharon Zhang
 
 play_game
 Sharon Zhang
+```
 
 
 
