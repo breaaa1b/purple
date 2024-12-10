@@ -183,6 +183,7 @@ class Game:
     """
     def __init__(self, player_num, max_score=100):
         """ Initializes new hearts game
+        Author: Breanna Bernardino
         
         Args:
             player_num (int): amount of players playing the game
@@ -201,6 +202,7 @@ class Game:
     
     def setup_players(self):
         """ Setting up players according to the number of players
+        Author: Breanna Bernardino
         
         Side effects:
             Modify players and scores attributes to setup for new game
@@ -213,6 +215,7 @@ class Game:
     
     def card_deck(self):
         """ Setting up the card deck for the game
+        Author: Breanna Bernardino
         
         Side effects:
             Modify deck attributes to fit the number of players
@@ -228,6 +231,7 @@ class Game:
     def shuffle_and_deal(self):
         """ Begin the game by randomly shuffle the card deck and deal the cards
         for each player based on the number of player
+        Author: Sharon Zhang
         
         Side effects:
             Print out shuffled complete messgae for players.
@@ -240,6 +244,8 @@ class Game:
     
     def play_trick(self):
         """Simulates a trick being played
+        Author: Breanna Bernardino
+        Techniques: f-string, key function with lambda
 
             Returns:
             winner(Player): winner (player object) of the current trick
@@ -276,6 +282,7 @@ class Game:
         
     def calculate_scores(self):
         """Calculates scores for players in current game
+        Author: Sharon Zhang
         
         Side effects:
             prints name of player that shot the moon if round_score is 26
@@ -293,6 +300,7 @@ class Game:
                 
     def play_round(self):
         """ Perform each round of game
+        Author: Sharon Zhang
         
         Side effects:
             Print out current leader for player
@@ -320,6 +328,7 @@ class Game:
     
     def play_game(self):
         """Begins and ends the hearts game
+        Author: Sharon Zhang
         
         Side Effects:
             prints out that the game is over, who the winner is, 
