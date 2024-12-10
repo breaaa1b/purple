@@ -33,71 +33,67 @@ Run “python3 hearts.py” will start the game
 
 - Attribution:
 __init__(Player)
-Primary author: Sharon Zhang
-
+Sharon Zhang
 
 receive_cards
-Primary author: Breanna Bernardino
-
+Breanna Bernardino
 
 play_card(Player)
-Primary author: Sharon Zhang
-
+Sharon Zhang
 
 collect_trick
-Primary author: Sharon Zhang
-
+Sharon Zhang
 
 calculate_score
-Primary author: Sharon Zhang
+Sharon Zhang
 Technique: Conditional expression
 
 reset
-Primary author: Sharon Zhang
+Sharon Zhang
 
 
 __str__()
-Primary author: Sharon Zhang
-Technique: Magic methods other than __init__()
+Sharon Zhang
+Magic methods other than __init__()
 
 play_card(HumanPlayer)
-Primary author:Sharon Zhang
+Sharon Zhang
 
 
-play_card (ComputerPlayer)
-Primary author: Breanna Bernardino
+Play_card (ComputerPlayer)
+Breanna Bernardino
 
 
 __init__(Game)
-Primary author: Breanna Bernardino
+Breanna Bernardino
 
 
 setup_players
-Primary author: Breanna Bernardino
+Breanna Bernardino
 
 
 card_deck
-Primary author: Breanna Bernardino
+Breanna Bernardino
 
 
 shuffle_and_deal
-Primary author: Sharon Zhang
+Sharon Zhang
 
 
 play_trick
-Primary author: Breanna Bernardino
-Techniques: F-string, Key function with lambda
-
+Breanna Bernardino
+F-string
+Key function with lambda
 calculate_scores 
-Primary author: Sharon Zhang
+Sharon Zhang
 
 
 play_round
-Primary author: Sharon Zhang
+Sharon Zhang
 
 
 play_game
-Primary author: Sharon Zhang
+Sharon Zhang
 
 
 
