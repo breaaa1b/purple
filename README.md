@@ -37,65 +37,67 @@ Primary author: Sharon Zhang
 
 
 receive_cards
-Primary Breanna Bernardino
+Primary author: Breanna Bernardino
 
 
 play_card(Player)
-Sharon Zhang
+Primary author: Sharon Zhang
 
 
 collect_trick
-Sharon Zhang
+Primary author: Sharon Zhang
 
 
 calculate_score
-Sharon Zhang
-Conditional expression
+Primary author: Sharon Zhang
+Technique: Conditional expression
+
 reset
-Sharon Zhang
+Primary author: Sharon Zhang
 
 
 __str__()
-Sharon Zhang
-Magic methods other than __init__()
+Primary author: Sharon Zhang
+Technique: Magic methods other than __init__()
+
 play_card(HumanPlayer)
-Sharon Zhang
+Primary author:Sharon Zhang
 
 
-Play_card (ComputerPlayer)
-Breanna Bernardino
+play_card (ComputerPlayer)
+Primary author: Breanna Bernardino
 
 
 __init__(Game)
-Breanna Bernardino
+Primary author: Breanna Bernardino
 
 
 setup_players
-Breanna Bernardino
+Primary author: Breanna Bernardino
 
 
 card_deck
-Breanna Bernardino
+Primary author: Breanna Bernardino
 
 
 shuffle_and_deal
-Sharon Zhang
+Primary author: Sharon Zhang
 
 
 play_trick
-Breanna Bernardino
-F-string
-Key function with lambda
+Primary author: Breanna Bernardino
+Techniques: F-string, Key function with lambda
+
 calculate_scores 
-Sharon Zhang
+Primary author: Sharon Zhang
 
 
 play_round
-Sharon Zhang
+Primary author: Sharon Zhang
 
 
 play_game
-Sharon Zhang
+Primary author: Sharon Zhang
 
 
 
