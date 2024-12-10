@@ -13,7 +13,9 @@ class Player:
         collected_tricks (list): the cards received when winning the trick
     """
     def __init__(self, name):
-        """ Initialize a Player object.
+        """ Primary author: Sharon Zhang
+        Initialize a Player object.
+        
         Args:
             name (str): a string that stored as player's name
         
@@ -25,7 +27,8 @@ class Player:
         self.collected_tricks = []
     
     def receive_cards(self, cards):
-        """ Recive the cards deal by the computer randomly
+        """ Primary authoer: Breanna Bernardino 
+        Recive the cards deal by the computer randomly
         
         Args:
             cards (list): a list of cards deal by the computer from the start of 
@@ -37,7 +40,8 @@ class Player:
         self.hand.extend(cards)
     
     def play_card(self, lead_suit=None, is_first_trick=False):
-        """ This method let player play their card for game
+        """ Primary author: Sharon Zhang
+        This method let player play their card for game
         
         Args:
             lead_suit (str): optional if the first trick for current player;
@@ -53,7 +57,8 @@ class Player:
         raise NotImplementedError()
     
     def collect_trick(self, cards):
-        """ Allow player collect the cards if winning the trick
+        """ Primary author: Sharon Zhang
+        Allow player collect the cards if winning the trick
         Args:
             cards (list): if ended up with the highest number of the suit, the
             player will be able to collect all four cards played for current 
@@ -66,7 +71,9 @@ class Player:
         self.collected_tricks.extend(cards)
     
     def calculate_score(self):
-        """ Calculating scores based on the cards player collected through
+        """ Primary author: Sharon Zhang
+            Techniques: conditional expression
+        Calculating scores based on the cards player collected through
         every trick
         
         Returns:
@@ -83,7 +90,8 @@ class Player:
         return score
     
     def reset(self):
-        """ Reset the game for another round
+        """ Primary author: Sharon Zhang
+        Reset the game for another round
         
         Side effects:
             Modify hand and collected_tricks for each player
@@ -92,7 +100,9 @@ class Player:
         self.collected_tricks.clear()
     
     def __str__(self):
-        """ Produce an informal string representation of current Player's name
+        """ Primary author: Sharon Zhang
+            Techniques: Magic methods other than __init__()
+        Produce an informal string representation of current Player's name
         
         Returns:
             str: the string representation of current Player
@@ -104,7 +114,8 @@ class HumanPlayer(Player):
         Sub-class of Player    
     """
     def play_card(self, lead_suit=None, is_first_trick=False):
-        """Simulates player playing their card
+        """ Primary author: Sharon Zhang
+        Simulates player playing their card
 
         Args:
             lead_suit (str): the lead suit of the trick
@@ -140,7 +151,8 @@ class ComputerPlayer(Player):
         Sub-class of Player
     """
     def play_card(self, lead_suit=None, is_first_trick=False):
-        """ Simulates NPC computer player playing their card
+        """ Primary authoer: Breanna Bernardino 
+        Simulates NPC computer player playing their card
         
         Args:
             lead_suit (str): the lead suit of the trick
