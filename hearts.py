@@ -342,7 +342,7 @@ class Game:
             break # break out if game is over
 
 if __name__ == "__main__":
-    print("Welcomd to Hearts Card Game!")
+    print("Welcome to Hearts Card Game!")
     
     max_score = input("Please enter the max score if you want: ")    
     while True:
